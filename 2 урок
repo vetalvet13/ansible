@@ -1,0 +1,31 @@
+1 задание
+
+---
+- name: Create User1
+  user:
+    name: user1
+    shell: /bin/bash
+    create_home: yes
+
+2 задание
+
+---
+- name: Create Directorie
+  file:
+    path: /home/pop
+    state: directory
+
+- name: Create File
+  file:
+    path: /home/pop/123.txt
+    state: touch
+
+- name: Add server strings
+  lineinfile:
+    path: /home/pop/123.txt
+    line: dwgerhryrtty654985
+
+- name: CURL download file with token auth
+  uri:
+    url: https://raw.githubusercontent.com/ansible/ansible/devel/README.rst
+    dest: /home/pop/README.rst
