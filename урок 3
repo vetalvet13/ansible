@@ -1,0 +1,29 @@
+задание 1
+
+---
+- hosts: all
+vars_files:
+- vars/wordpress.yml
+roles:
+- geerlingguy.nginx
+- geerlingguy.php
+- geerlingguy.mysql
+- wordpress
+
+
+задание 1.1
+
+---
+- src: geerlingguy.nginx
+- src: geerlingguy.mysql
+- src: geerlingguy.php
+
+задание 1.2
+
+[defaults]
+roles_path = ./ansible/external_roles
+
+задание 1.3
+
+external_roles
+.vault.pass
