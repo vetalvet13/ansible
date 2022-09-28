@@ -4,6 +4,8 @@ mysql_db: "wordpress"
 mysql_user: "wordpress"
 mysql_password: "WordpreSS0!"
 --------------------------------------------------
+ansible-vault view vars/wordpress_vault.yml
+--------------------------------------------------
 vim ~/ansible/wordpress.yml
 ---
 - hosts: all
