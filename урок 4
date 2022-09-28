@@ -1,0 +1,19 @@
+ansible-vault create vars/wordpress_vault.yml
+
+mysql_db: "wordpress"
+mysql_user: "wordpress"
+mysql_password: "WordpreSS0!"
+--------------------------------------------------
+vim ~/ansible/wordpress.yml
+---
+- hosts: all
+
+  vars_files:
+    - vars/wordpress.yml
+  roles:
+    - { role: geerlingguy.nginx, tags: [nginx]}
+    - { role: geerlingguy.php, tags: [php]}
+    - { role: geerlingguy.mysql, tags: [mysql]}
+    - { role: wordpress, tags: [wordpress, app]}
+------------------------------------------------
+ansible-playbook wordpress.yml -bK --ask-vault-pass -t nginx
