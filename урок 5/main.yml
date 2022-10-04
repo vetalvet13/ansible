@@ -1,0 +1,26 @@
+---
+- name: Create Directorie
+  file:
+    path: /home/pop
+    state: directory
+
+- name: Check if file already exists
+  command: ls /home/pop/123.txt
+  register: file_exists
+  ignore_errors: yes
+
+- name: Create File
+  file:
+    path: /home/pop/123.txt
+    state: touch
+    when: file_exists is failed
+
+- name: Add server strings
+  lineinfile:
+    path: /home/pop/123.txt
+    line: dwgerhryrtty654985
+
+- name: CURL download file with token auth
+  uri:
+    url: https://raw.githubusercontent.com/ansible/ansible/devel/README.rst
+    dest: /home/pop/README.rst
