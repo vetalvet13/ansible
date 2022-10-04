@@ -1,0 +1,7 @@
+---
+
+users:
+  - login: "test1"
+    pass: "123"
+  - login: "test2"
+    pass: "123"
