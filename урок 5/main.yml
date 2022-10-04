@@ -5,15 +5,20 @@
     state: directory
 
 - name: Check if file already exists
-  command: ls /home/pop/123.txt
+  command: ls /home/vet2/123.txt
   register: file_exists
   ignore_errors: yes
 
 - name: Create File
   file:
-    path: /home/pop/123.txt
+    path: /home/vet2/123.txt
     state: touch
-    when: file_exists is failed
+  when: file_exists is failed
+
+- name: show message if file exists
+  debug:
+    msg: The user file already exists.
+  when: file_exists is succeeded
 
 - name: Add server strings
   lineinfile:
