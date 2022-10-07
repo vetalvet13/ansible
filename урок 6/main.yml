@@ -17,3 +17,5 @@
   template:
     src=templates/nginx_vhost.conf
     dest=/etc/nginx/conf.d/{{ hostname }}.conf
+  notify:
+    - NGINX reload
