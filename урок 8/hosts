@@ -1,0 +1,2 @@
+[hosts]
+192.168.0.67 ansible_ssh_user=vet2 ansible_ssh_pass=123
