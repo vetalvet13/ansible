@@ -12,9 +12,9 @@
     check_health: "{{ result.content | from_json }}"
 
 - name: check health nginx
-  include_tasks: diag_nginx.yml
+  include_tasks: nginx.yml
   when: check_health.nginx | default(false) | bool
 
 - name: check health mysql
-  include_tasks: diag_mysql.yml
+  include_tasks: mysql.yml
   when: check_health.mysql | default(false) | bool
