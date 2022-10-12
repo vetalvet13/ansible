@@ -1,8 +1,8 @@
 ---
 - name: (nginx) check
-  include_tasks: check_nginx.yml
-  when: check_nginx | default(false) | bool
+  include_tasks: nginx.yml
+  when: nginx | default(false) | bool
 
 - name: (mysql) check
-  include_tasks: check_mysql.yml
-  when: check_mysql | default(false) | bool
+  include_tasks: mysql.yml
+  when: mysql | default(false) | bool
