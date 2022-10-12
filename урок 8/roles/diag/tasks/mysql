@@ -1,0 +1,9 @@
+---
+- name: (mysql) check run service
+  ansible.builtin.shell:
+    cmd: systemctl status mysql
+  register: result
+
+- name: (mysql) print result - check run service
+  debug:
+    var: result.stdout_lines
