@@ -1,0 +1,4 @@
+---
+- name: check health nginx
+  ansible.builtin.shell:
+    cmd: ping -c 4 8.8.8.8
