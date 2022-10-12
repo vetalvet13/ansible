@@ -1,0 +1,20 @@
+---
+- name: check health
+  ansible.builtin.uri:
+    url: "http://127.0.0.1/health"
+    return_content: true
+    status_code: 200
+  delegate_to: 127.0.0.1
+  register: result
+
+- name: parse result in json
+  set_fact:
+    check_health: "{{ result.content | from_json }}"
+
+- name: check health nginx
+  include_tasks: diag_nginx.yml
+  when: check_health.nginx | default(false) | bool
+
+- name: check health mysql
+  include_tasks: diag_mysql.yml
+  when: check_health.mysql | default(false) | bool
