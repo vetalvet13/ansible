@@ -1,0 +1,21 @@
+---
+- name: Install Nginx Web Server
+  apt:
+    name=nginx
+    state=latest
+  when:
+    ansible_os_family == "Debian"
+  notify:
+    - nginx systemd
+
+- name: Replace nginx.conf
+  template:
+    src=templates/nginx.conf
+    dest=/etc/nginx/nginx.conf
+
+- name: Add NGINX virtualhost config
+  template:
+    src=templates/nginx_vhost.conf
+    dest=/etc/nginx/conf.d/{{ hostname }}.conf
+  notify:
+    - NGINX reload
