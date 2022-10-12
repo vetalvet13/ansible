@@ -1,0 +1,9 @@
+---
+- name: (nginx) check run service
+  ansible.builtin.shell:
+    cmd: systemctl status nginx
+  register: result
+
+- name: (nginx) print result - check run service
+  debug:
+    var: result.stdout_lines
